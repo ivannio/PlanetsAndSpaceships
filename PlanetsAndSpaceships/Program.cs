@@ -31,6 +31,8 @@ namespace PlanetsAndSpaceships
             spaceCrafts.Add("New Horizons", new List<string> { "Jupiter", "Pluto" });
             spaceCrafts.Add("Mariner 10", new List<string> { "Venus", "Mercury" });
             spaceCrafts.Add("Mars Observer", new List<string> { "Mars" });
+            
+            var spacecraftsVisitedPlanet = new List<string>();
 
             foreach (var planet in planetList)
             {
@@ -38,9 +40,11 @@ namespace PlanetsAndSpaceships
                 {
                     if (spaceCraft.Value.Contains(planet))
                     {
-                        Console.WriteLine($"The {spaceCraft.Key} excursion observed {planet}");
+                        spacecraftsVisitedPlanet.Add(spaceCraft.Key);
                     }
                 }
+                Console.WriteLine($"{planet}: {string.Join(", ", spacecraftsVisitedPlanet)}");
+                spacecraftsVisitedPlanet.Clear();
             }
             Console.ReadLine();
         }
